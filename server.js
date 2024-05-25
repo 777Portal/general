@@ -21,13 +21,39 @@ const { writeFile, readFile } = require('fs');
 
 // express reqs.
 app.get('/', (req, res) =>{
-  console.log(req)
-  return res.sendFile('lander.html', { root: './views' });
+  let loc = req.rawHeaders[1]
+  let split = loc.split('.')
+
+  // if (split.length == 1) return res.sendFile('homepage.html', { root: './views' });
+
+  // switch (split[0].toLowerCase()){
+  //   case 'blog':
+  //     return res.sendFile('blog.html', { root: './views' });
+  //   case 'art':
+  //     return res.sendFile('blog.html', { root: './views' });
+  //   default:
+  //     return res.sendFile('homepage.html', { root: './views' });
+  // }
+
+  return res.sendFile('homepage.html', { root: './views' });
 })
 
 app.get('/about', (req, res) =>{
     console.log(req)
-    res.json({ true: false, funny: res.sessionID  });  
+    return res.sendFile('about.html', { root: './views' });
+    // res.json({ true: false, funny: res.sessionID  });  
+})
+
+app.get('/blog', (req, res) =>{
+  console.log(req)
+  return res.sendFile('blog.html', { root: './views' });
+  // res.json({ true: false, funny: res.sessionID  });  
+})
+
+app.get('/uc', (req, res) =>{
+  console.log(req)
+  return res.sendFile('underconstruction.html', { root: './views' });
+  // res.json({ true: false, funny: res.sessionID  });  
 })
 
 const port = 3000
