@@ -34,6 +34,8 @@ async function innithehehbritish(){
 
             return holder;
         }
+        
+        console.log(json)
     })
   
     .catch(function(err) {  
