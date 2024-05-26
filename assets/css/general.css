@@ -54,6 +54,10 @@ li {
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
+.img {
+  max-width: 100%;
+}
+
 body {
   /* why does adding 0 margin cause a scroll bar... im so sick of css  */
   margin: 0;

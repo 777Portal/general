@@ -16,7 +16,7 @@ app.use(session({
 app.use('/assets', express.static('assets'))
 
 // file stuff
-const fs = require('fs'); 
+const fs = require('fs').promises; 
 const { writeFile, readFile } = require('fs');
 
 // express reqs.
@@ -55,6 +55,22 @@ app.get('/uc', (req, res) =>{
   return res.sendFile('underconstruction.html', { root: './views' });
   // res.json({ true: false, funny: res.sessionID  });  
 })
+
+app.get('/api/blog/list', async (req, res) => {
+  const files = await fs.readdir('blogs');
+  let blogs = {};
+
+  for (const file of files) {
+    console.log(file);
+    const content = JSON.parse(await fs.readFile(`blogs/${file}`, 'utf8'));
+    console.log(content);
+    blogs[file] = content;
+  }
+
+  console.log(blogs);
+  return res.json({ blogs });
+});
+
 
 const port = 3000
 app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
