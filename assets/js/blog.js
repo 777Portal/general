@@ -13,7 +13,7 @@ async function innithehehbritish(){
             
             let blogEl = createNewBlog(blogJSON);
 
-            getEl('blogHolder').appendChild(blogEl)
+            getEl('blogHolder').prepend(blogEl) // cuz its from oldest to newest so we have to reverse it
         }
 
         function createNewBlog(json){
